@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>normal flow+box model</title>
+    <style>
+        .div-box01 {
+            /*
+                内容区(content)，元素中所有子元素和文本内容都在内容区中排列
+                    内容区的大小由width和height两个属性来设置
+            */
+            width: 100px;
+            height: 100px;
+            background-color: aquamarine;
+            /*
+                边框(border), 边框属于盒子边缘，边框里属于边框内容，出了边框属于边框外部
+                    边框的大小会影响盒子的大小
+                边框样式：
+                border-width：边框宽度 
+                    - 四个值：上右下左 
+                    - 三个值：上 左右 下 
+                    - 两个值：上下 左右
+                border-color: 边框颜色 
+                    - 可以四个值
+                border-style: 边框样式 
+                    - solid 实线 dotted 点状虚线 dashed 虚线 double 双线
+                    - 默认none
+                简写：
+                    - border
+                    - border-xxx: top left right bottom
+                
+            */
+            /* border-width: 5px; 
+            border-color: rebeccapurple;
+            border-style: solid; */
+            border: 5px solid black;
+            /*
+                内边距(padding)
+                    - 内容区和边框之间的距离是内边距
+                    - 四个方向
+                    - 内边距的设置会影响到盒子的大小
+                    - 背景颜色会延伸到内边距上
+                一个盒子的可见框大小，由内容区 padding 和 border共同决定
+                盒子大小 = content + padding + border
+                简写：padding
+            */
+            padding: 10px;
+            /*
+                外边框(margin)
+                    - 外边框不会影响盒子可见框的大小
+                    - 外边框影响盒子位置
+                    - 四个方向地外边距
+                        - margin-top
+                            - 上外边距，设置一个正直，元素会向下移动
+                        - margin-right
+                            - 默认情况下设置margin-right不会产生任何效果
+                        - margin-bottom
+                            - 下外边距，设置一个正值，其下边的元素会向下移动
+                        - margin-left
+                            - 左外边距，设置一个正值，元素会向右移动
+                    - margin可以设置负值，若是负值则元素向相反方向移动
+                    - 元素在页面中是按照自左向右顺序排列
+                        因此默认情况下若设置左left和上top外边距则会移动元素自身
+                        而设置下bottom和右right外边距会移动其他元素
+                    - margin会影响盒子实际占用空间
+            */
+            margin-left: 100px;
+            margin-top: 100px;
+            /* margin-bottom: 100px; */
+        }
+
+        .inner {
+            width: 100%;
+            height: 100%;
+            background-color: yellow;
+        }
+
+        .div-box02 {
+            width: 100px;
+            height: 100px;
+            background-color: cornflowerblue;
+            margin-top: 100px;
+        }
+    </style>
+</head>
+<body>
+    <!--
+        文档流(normal flow)
+            - 网页是一个多层结构，一层摞一层
+            - 通过css可以分别为每一层来设置样式
+            - 作为用户来讲只能开到最顶层
+            - 最底层是文档流，它是网页的基础
+                创建的元素默认都是在文档流中进行排列
+            - 元素主要有两个状态
+                在文档流中/不在文档流（脱离文档流）
+            - 元素在文档流中的特点：
+                - 块元素 
+                    - 独占一行
+                    - 默认宽度是父类元素的全部（将父元素撑满）
+                    - 默认高度被内容撑开（子元素）
+                - 行内元素
+                    - 行内元素不会独占页面一行，只占自身大小
+                    - 行内元素在页面中从左向右水平排列，若一行之中不能容纳下所有的行内元素
+                        则元素会换到第二行继续自左向右排列
+                    - 行内元素的默认宽度和高度都被内容撑开
+    -->
+
+    <!--
+        盒模型、盒子模型、框模型(box model)
+            - css将页面中的所有元素都设置为一个矩形盒子
+            - 将元素设置为矩形的盒子后，对页面的布局变成将不同的盒子摆放到不同的位置
+            - 每一个盒子都由几个部分组成
+                决定大小：
+                内容区(content)
+                内边距(padding)
+                边框(border)
+                决定位置：
+                外边距(margin)
+
+    --> 
+    <div class="div-box01">
+        <div class="inner"></div>
+    </div>
+    <div class="div-box02">
+    </div>
+</body>
+</html>

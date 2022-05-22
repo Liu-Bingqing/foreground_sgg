@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>水平布局&垂直布局</title>
+    <style>
+        .outer-horizontal {
+            height: 100px;
+            width: 100%;
+            border: 5px red solid;
+        }
+
+        .inner-horizontal {
+            /* width: auto; */
+            width: 100px;
+            height: 100px;
+            background-color: cornflowerblue;
+            /*
+                元素水平方向的布局：
+                    元素在其父元素中水平方向的位置由几个属性共同决定：
+                        margin-left
+                        border-left
+                        padding-left
+                        width
+                        padding-right
+                        border-right
+                        margin-right
+                    一个元素在其父元素中，水平布局必须要满足以下的等式
+                    [必须满足] margin-left + border-left + padding-left + width + padding-right + border-right + margin-right = 其父元素内容的宽度
+
+                    若相加结果使等式不成立，则称为过渡约束，则等式会自动调整
+                    - 调整情况：
+                        无auto, 浏览器自动调整margin-right
+                        有auto, 则会自动调整为auto值
+                    - 若将一个宽度和外边距设置为auto，则宽度则会调整到最大
+                    - 若将三个值都是只为auto，则外边距都是0，宽度最大
+                    - 若将两个外边距设置为auto，宽度固定值，则会将外边距设置为相同的值（居中）
+                        width: xxx; margin:0 auto
+
+            */
+            margin: auto;
+        }
+
+        .outer-vertical {
+            background-color: darkgrey;
+            /* height: 100%; */
+            /*
+                默认情况下父元素的高度被内容撑开
+            */
+        }
+
+        .inner-vertical {
+            width: 100px;
+            background-color: yellow;
+            height: 200px;
+            margin-bottom: 100px;
+        }
+        
+        .box1 {
+            width: 200px;
+            height: 200px;
+            background-color: aquamarine;
+            overflow: auto;
+            /* overflow-y: scroll; */
+        }
+        
+        .box2 {
+            width: 100px;
+            height: 400px;
+            /*
+                子元素在父元素的内容区中排列的
+                    若子元素的大小超过父元素，则子元素会从父元素中溢出
+                    使用overflow属性来设置父元素如何处理溢出的子元素
+                    overflow可选值: 
+                        visible: 默认值
+                        hidden: 溢出内容被裁剪
+                        scroll: 生成两个滚动条
+                        auto: 自动生成需要的滚动条
+            */
+            background-color: orange;
+        }
+
+        .box-01, .box-02 {
+            width: 100px;
+            height: 100px;
+            font-size: 100px;
+        }
+
+        .box-01 {
+            background-color: blue;
+            /*设置一个下边距*/
+            margin-bottom: 100px;
+        }
+
+        .box-02 {
+            background-color: red;
+            /*设置一个上边距*/
+            margin-top: -50px;
+        }
+        /*
+            垂直外边距的重叠（折叠）
+                - 相邻的垂直方向外边距会发生重叠现象
+                - 兄弟元素
+                    - 兄弟元素间的相邻垂直外边距会取二者之间的较大值（都是正值）
+                    - 特殊情况：
+                        若相邻的外边距一正一负，则取二者的和
+                        若相邻的外边距都是负值，则取二者的绝对值较大的
+
+                -父子元素
+                    - 父子元素间相邻外边距，子元素会传递给父元素（上外边距）
+        */
+        .box-03 {
+            width: 100px;
+            height: 50px;
+            background-color: greenyellow;
+            padding-top: 50px;
+        }
+        
+        .box-04 {
+            width: 50px;
+            height: 50px;
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <div class="outer-horizontal">
+        <div class="inner-horizontal"></div>
+    </div>
+
+    <hr>
+
+    <div class="outer-vertical">
+        <div class="inner-vertical"></div>
+        <div class="inner-vertical"></div>
+    </div>
+
+    <hr>
+
+    <div class="box1">
+        <div class="box2"></div>
+    </div>
+
+    <hr>
+
+    <div class="box-01"></div>
+    <div class="box-02"></div>
+
+    <hr>
+
+    <div class="box-03">
+        <div class="box-04"></div>
+    </div>
+</body>
+</html>
