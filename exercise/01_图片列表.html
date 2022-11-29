@@ -3,25 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">、
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/Css_style/reset.css">
     <title>图片列表</title>
+    <style>
+        /* 设置
+        /* 设置外部ul的样式*/
+        .img-list {
+            width: 190px;
+            height: 470px;
+            overflow: hidden; /*裁剪溢出的内容*/
+            margin: 50px auto; /*使ul在页面居中（实际示例中不需要这样写）*/
+        }
+        
+        .img-list img {
+            width: 100%;
+            background-color: #F4F4F4;
+        }
+    </style>
 </head>
 <body>
-    <ul>
+    <ul class="img-list">
         <li>
             <a href="javascript:;">
-                <img src="" alt="">
+                <img src="/exercise/exercise_img/binge watching.png" alt="">
             </a>
         </li>
         <li>
             <a href="javascript:;">
-                <img src="" alt="">
+                <img src="/exercise/exercise_img/binge watching.png" alt="">
             </a>
         </li>
         <li>
             <a href="javascript:;">
-                <img src="" alt="">
+                <img src="/exercise/exercise_img/binge watching.png" alt="">
             </a>
         </li>
     </ul>
